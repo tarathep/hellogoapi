@@ -1,0 +1,38 @@
+package api
+
+import (
+	"fmt"
+
+	"github.com/tarathep/hellogoapi/repository"
+
+	"github.com/gin-gonic/gin"
+	"github.com/tarathep/hellogoapi/models"
+)
+
+type HelloHandler struct {
+	DB repository.HelloLanguage
+}
+
+func (h *HelloHandler) GetHello(c *gin.Context) {
+
+	hellos, err := h.DB.AllHello()
+	if err != nil {
+		return
+	}
+	c.JSON(200, hellos)
+}
+
+func (h *HelloHandler) PostHello(c *gin.Context) {
+
+	hello := models.Hello{}
+
+	if err := c.ShouldBindJSON(&hello); err != nil {
+		return
+
+	}
+
+	result, err := h.DB.InsertHello(hello)
+	fmt.Println("Inserted a single document: ", result, err)
+
+	c.String(200, "success")
+}
