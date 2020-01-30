@@ -10,5 +10,14 @@ response [{},{}]<br>
 request {"language":"C++","message":"c is height lv programing"}<br>
 Response success<br>
 
+for UNIT TEST<br>
+> go test<br>
+
+for RUN<br>
+> go run main.go<br>
+
+ps . mongodb is running auth = admin@password<br>
+
+
 
 
