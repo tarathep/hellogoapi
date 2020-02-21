@@ -31,9 +31,8 @@ func (db *mockDB) InsertHello(hello models.Hello) (models.Hello, error) {
 	return hello, nil
 }
 
-/*
 func TestHelloFindAll(t *testing.T) {
-	route := route.Route{api.HelloHandler{DB: &mockDB{}}}
+	route := route.Route{api.HelloHandler{DB: &mockDB{}, Kafka: &mockKafka{}}}
 	r := route.SetupRouter()
 
 	w := httptest.NewRecorder()
@@ -50,7 +49,6 @@ func TestHelloFindAll(t *testing.T) {
 	assert.Equal(t, strings.Trim(w.Body.String(), "\n"), `[{"language":"C++","message":"c is height lv programing"},{"language":"VB","message":"c is basic programing"}]`)
 
 }
-*/
 
 func TestHelloAdd(t *testing.T) {
 	route := route.Route{api.HelloHandler{DB: &mockDB{}, Kafka: &mockKafka{}}}
