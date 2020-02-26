@@ -3,8 +3,7 @@ package api
 import (
 	"fmt"
 
-	"github.com/tarathep/hellogoapi/event"
-
+	"github.com/tarathep/hellogoapi/kafka"
 	"github.com/tarathep/hellogoapi/repository"
 
 	"github.com/gin-gonic/gin"
@@ -13,7 +12,7 @@ import (
 
 type HelloHandler struct {
 	DB    repository.HelloLanguage
-	Kafka event.Producer
+	Kafka kafka.Producer
 }
 
 func (h *HelloHandler) GetHello(c *gin.Context) {
